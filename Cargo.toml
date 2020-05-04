@@ -3,6 +3,8 @@ name = "volatile_unique_id"
 version = "0.1.0"
 authors = ["Bennett Hardwick <me@bennetthardwick.com>"]
 edition = "2018"
+license = "MIT"
+description = "Short lived and fast unique ids"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
