@@ -1,3 +1,4 @@
+use std::fmt::Debug;
 use std::hash::{Hash, Hasher};
 use std::sync::{Arc, Mutex};
 
@@ -105,13 +106,22 @@ impl PartialEq for IdInner {
     }
 }
 
+impl Debug for IdInner {
+    fn fmt(
+        &self,
+        format: &mut std::fmt::Formatter<'_>,
+    ) -> std::result::Result<(), std::fmt::Error> {
+        format.write_str(&format!("Id({})", self.value))
+    }
+}
+
 impl Hash for IdInner {
     fn hash<H: Hasher>(&self, state: &mut H) {
         self.value.hash(state);
     }
 }
 
-#[derive(Clone, Hash)]
+#[derive(Clone, Eq, PartialEq, Debug, Hash)]
 pub struct Id {
     inner: Arc<IdInner>,
 }
